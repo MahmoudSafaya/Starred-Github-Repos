@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useGlobalContext } from './Context';
 
 const Items = () => {
@@ -9,7 +9,13 @@ const Items = () => {
     numbers[i] = i + 1;
   }
 
-  if (loading) return <div className='container'>Loading...</div>;
+  if (loading) return (
+    <div className='container loading'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  );
   if (error) return <div className='container'>Error</div>;
 
   return (
@@ -28,7 +34,7 @@ const Items = () => {
       </div>
       {
         list.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
-        .map(item => {
+        .map((item) => {
           const {id, name, description, stargazers_count, open_issues_count, owner, clone_url} = item;
           return (
             <article key={id} className='repo flex'>
@@ -48,6 +54,10 @@ const Items = () => {
             </article>
           )
         })
+      }
+      {
+        list.filter(item => item.name.toLowerCase().includes(input.toLowerCase())).length === 0
+        ?  <div className='center container'>no repos with this name</div> : ''
       }
       <div>
         <ul>

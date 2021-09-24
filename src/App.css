@@ -17,6 +17,10 @@ body{
   align-items: center;
   flex-direction: column;
 }
+.center{
+  padding: 30px;
+  text-align: center;
+}
 ul{
   list-style: none;
 }
@@ -25,11 +29,11 @@ ul li{
   padding: 3px 8px;
   border: 1px solid rgba(0,0,0,0.1);
   cursor: pointer;
-  color:rgb(30, 30, 255);
+  color:rgb(122, 122, 243);
   font-weight: 600;
 }
 ul li.active{
-  color: black !important;
+  color: #333 !important;
 }
 
 header{
@@ -48,6 +52,7 @@ form{width: 100%;}
   border-radius: 5px;
   outline: none;
   padding: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.08);
 }
 
 .repo{
@@ -122,5 +127,32 @@ form{width: 100%;}
   }
   .repo .repo-info{
     width: 70%;
+  }
+}
+
+.loading{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading span{
+  width: 10px;
+  height: 15px;
+  margin: 10px;
+  background: rgb(85, 85, 255);
+  animation: load 0.4s infinite linear alternate;
+}
+.loading span:nth-of-type(2){
+  animation-delay: 0.2s;
+}
+.loading span:nth-of-type(3){
+  animation-delay: 0.4s;
+}
+
+@keyframes load {
+  100%{
+    transform: scaleY(3);
   }
 }
