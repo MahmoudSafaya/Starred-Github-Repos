@@ -1,13 +1,9 @@
 import React from 'react'
 import { useGlobalContext } from './Context';
+import Pagination from './Pagination';
 
 const Items = () => {
-  const {list, loading, error, input, page, setPage, setLoading} = useGlobalContext();
-
-  const numbers = [];
-  for(let i=0; i<5; i++){
-    numbers[i] = i + 1;
-  }
+  const {list, loading, error, input} = useGlobalContext();
 
   if (loading) return (
     <div className='container loading'>
@@ -20,18 +16,7 @@ const Items = () => {
 
   return (
     <div className='container'>
-      <div>
-        <ul>
-          {numbers.map(num => {
-            return (
-              <li 
-              key={num} 
-              onClick={() => {setPage(num); setLoading(true)}}
-              className={page === num ? 'active' : ''}>{num}</li>
-            )
-          })}
-        </ul>
-      </div>
+      <Pagination />
       {
         list.filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
         .map((item) => {
@@ -59,18 +44,7 @@ const Items = () => {
         list.filter(item => item.name.toLowerCase().includes(input.toLowerCase())).length === 0
         ?  <div className='center container'>no repos with this name</div> : ''
       }
-      <div>
-        <ul>
-          {numbers.map(num => {
-            return (
-              <li 
-              key={num} 
-              onClick={() => {setPage(num); setLoading(true)}}
-              className={page === num ? 'active' : ''}>{num}</li>
-            )
-          })}
-        </ul>
-      </div>
+      <Pagination />
     </div>
   
   )

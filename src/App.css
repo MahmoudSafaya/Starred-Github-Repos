@@ -21,8 +21,12 @@ body{
   padding: 30px;
   text-align: center;
 }
+.not-allowed{
+  cursor: not-allowed !important;
+}
 ul{
   list-style: none;
+  overflow: hidden;
 }
 ul li{
   display: inline;
@@ -33,7 +37,7 @@ ul li{
   font-weight: 600;
 }
 ul li.active{
-  color: #333 !important;
+  color: #555 !important;
 }
 
 header{
