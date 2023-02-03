@@ -42,7 +42,7 @@ const Items = () => {
       }
       {
         list.filter(item => item.name.toLowerCase().includes(input.toLowerCase())).length === 0
-        ?  <div className='center container'>no repos with this name</div> : ''
+        ?  <div className='center container no-repos'>no repos with this name</div> : ''
       }
       <Pagination />
     </div>
